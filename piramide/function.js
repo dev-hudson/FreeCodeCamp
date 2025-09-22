@@ -8,7 +8,7 @@ const rows = [];
 function padRow (rowNumber, rowCount) { 
     // " ".repeat(rowCount - rowNumber) -> Espaço vazio repete numtotal de linhas - numatual da linha.
     // character.repeat(rowNumber) -> # repete de acordo com a linha atual [ex: Se estiver na linha 4, vai repetir 4 vezes].
-    return " ".repeat(rowCount - rowNumber) + character.repeat(rowNumber) +  " ".repeat(rowCount - rowNumber);
+    return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) +  " ".repeat(rowCount - rowNumber);
 }
 
 // laço de repetição for.
