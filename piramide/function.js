@@ -13,7 +13,7 @@ function padRow (rowNumber, rowCount) {
 
 // laço de repetição for.
 // contador i começa em UM, enquanto i < count [8] o i vai receber ele mesmo mais 1.
-for (i = 1; i < count; i++) {
+for (i = 1; i <= count; i++) {
     // rows.push(padRow(i + 1, count)) -> a cada rodada, a função é inicializada, retornando para o rows um valor diferente.
     // padRow(i, count) -> o padRow dentro do laço faz com que a function funcione de acordo com o resultado gerado, por exemplo, quando o i estiver em 4, a function vai ser padRow(4, 8).
     rows.push(padRow(i, count));
