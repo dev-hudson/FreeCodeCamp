@@ -7,7 +7,7 @@ const rows = [];
     // rowCount é o número total de linhas [8].
 function padRow (rowNumber, rowCount) { 
     // " ".repeat(rowCount - rowNumber) -> Espaço vazio repete numtotal de linhas - numatual da linha.
-    // character.repeat(2 * rowNumber - 1) -> # repete de acordo com a linha atual [ex: Se estiver na linha 4, vai repetir 4 vezes].
+    // character.repeat(2 * rowNumber - 1) -> # repete de acordo com a (linha atual * 2) - 1 [ex: Se estiver na linha 4, vai repetir 7 vezes].
     return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) +  " ".repeat(rowCount - rowNumber);
 }
 
