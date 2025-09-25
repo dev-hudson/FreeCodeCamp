@@ -11,7 +11,15 @@ function padRow (rowNumber, rowCount) {
     return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) +  " ".repeat(rowCount - rowNumber);
 }
 
-// laço de repetição for.
+// 1° opção - laço de repetição while
+// enquanto o array rows for menor que 8, o loop é executado.
+while (rows.length < count) {
+    // rows.push(padRow(rows.length + 1, count)) ->  a cada rodada, a função é inicializada, retornando para o rows um valor diferente.
+    // padRow(rows.length + 1, count) -> o padRow dentro do laço faz com que a function funcione de acordo com o resultado gerado, por exemplo, quando o rows.length estiver em 3, a function vai ser padRow(4, 8).
+    rows.push(padRow(rows.length + 1, count));
+}
+
+// 2° opção - laço de repetição for.
 // contador i começa em UM, enquanto i < count [8] o i vai receber ele mesmo mais 1.
 for (let i = 1; i <= count; i++) {
     // rows.push(padRow(i + 1, count)) -> a cada rodada, a função é inicializada, retornando para o rows um valor diferente.
