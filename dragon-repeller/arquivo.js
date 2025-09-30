@@ -1,6 +1,6 @@
 let xp = 0;
 let health = 100;
-let gold = 50;
+let gold = 250;
 let currentWeaponIndex = 0;
 let fighting;
 let monsterHealth;
@@ -17,24 +17,43 @@ const monsterStats = document.querySelector('#monsterStats');
 const monsterName = document.querySelector('#monsterName');
 const monsterHealthText = document.querySelector('#monsterHealth');
 
+const weapons = [
+    {
+        name: 'bastão',
+        power: 5
+    },
+    {
+        name: 'punhal',
+        power: 30
+    },
+    {
+        name: 'martelo de garra',
+        power: 50
+    },
+    {
+        name: 'espada',
+        power: 100
+    }
+];
+
 const locations = [
     {
-        name: 'town square',
-        'button test': ['Go to store', 'Go to cave', 'Fight dragon'],
+        name: 'town square (Praça da cidade)',
+        'button test': ['Go to store (Ir para loja)', 'Go to cave (Ir para caverna)', 'Fight dragon (Enfrentar o dragão)'],
         'button functions': [goStore, goCave, fightDragon],
-        text: "You are in the town square. You see a sign that says \"Store\"."
+        text: "Você está na praça da cidade. Você vê uma placa que diz \"Loja\"."
     },
     {
-        name: "store",
-        "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+        name: "store (loja)",
+        "button text": ["Compre 10 de saúde (10 de ouro)", "Comprar arma (30 de ouro)", "Vá para a praça da cidade"],
         "button functions": [buyHealth, buyWeapon, goTown],
-        text: "You enter the store."
+        text: "Você entrou na loja."
     },
     {
-        name: 'cave',
-        'button text': ['Fight slime', "Fight fanged beast", "Go to town square"],
+        name: 'cave (caverna)',
+        'button text': ['Enfrentar slime', "Enfrentar fanged beast", "Vá para a praça da cidade"],
         'button functions': [fightSlime, fightBeast, goTown],
-        text: "You enter the cave. You see some monsters."
+        text: "Você entrou na caverna. Você pode ver alguns monstros."
   }
 ]   
 
@@ -70,10 +89,31 @@ function fightDragon() {
 }
 
 function buyHealth() {
-
+    if(gold >= 10) {
+        gold -= 10;
+        health += 10;
+        goldText.innerText = gold;
+        healthText.innerText = health;
+    } else {
+        text.innerText = 'Você não tem ouro o suficiente para comprar saúde.';
+    }
 }
 function buyWeapon() {
-
+    if (currentWeaponIndex < weapons.length - 1) {
+        
+        if (gold >= 30) {
+            gold -= 30;
+            currentWeaponIndex ++;
+            goldText.innerText = gold;
+            let newWeapon = weapons[currentWeaponIndex].name;
+            text.innerText = `Agora você tem um(a) ${newWeapon}.`
+            inventory.push(newWeapon);
+            text.innerText += ` Você tem em seu inventário: ${inventory} `;
+        } else {
+            text.innerText = `Você não possui ouro suficiente para comprar uma arma.`
+        }
+    
+    }
 }
 
 function fightSlime() {
