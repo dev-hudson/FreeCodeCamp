@@ -151,7 +151,10 @@ function fightDragon() {
 }
 
 function attack() {
-
+    text.innerText = `O ${monsters[fighting].name} ataca.`;
+    text.innerText += `Você ataca com sua ${weapons[currentWeaponIndex].name}.`;
+    health -= monsters[fighting].level;
+    monsterHealth -= weapons[currentWeaponIndex].power;
 }
 
 function dodge() {
